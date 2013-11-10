@@ -59,6 +59,9 @@ and open the template in the editor.
 
         <div id="panel1">
             <p>Panel izquierda</p>
+             <div id="imagenIzquierda">
+
+            </div>
         </div>
         <div id="panel2">
             <p>Panel centro</p>
@@ -66,7 +69,7 @@ and open the template in the editor.
             <div id="imagenImprimida">
 
             </div>
-            <input id="button2" type="button" value="Mostrar Catalogo">
+            <input id="button2" type="button" value="Mandar al panel izquierdo">
         </div>
         <div id="panel3">
             <input id="button1" type="button" value="Mostrar Catalogo">
@@ -98,16 +101,32 @@ and open the template in the editor.
                     }
                 }
 
+                var btnPanelCentral = function() {
+
+                    if ($("#button2").attr("value") == "Mandar al panel izquierdo") {
+                        $("#button2").attr("value", "Traer del panel izquierdo")
+                        $("#imagenes").hide(1000);
+                        var image = $(this).attr("src");
+                    $('#imagenImprimida').html('<img src="' + image + '"/>');
+                    } else {
+                        $("#button2").attr("value", "Mostrar Catalogo")
+                        $("#imagenes").hide(1000);
+                    }
+                }
         
 
-                $("input").click(function() {
+                $("#button1").click(function() {
 
-                    $("input").click(cambiarAtributo());
+                    $("#button1").click(cambiarAtributo());
 
                 });
         
        
-        
+         $("#button2").click(function() {
+
+                    $("#button2").click(btnPanelCentral());
+
+                });
       
            
                 $("img").click(function() {

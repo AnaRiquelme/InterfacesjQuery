@@ -42,7 +42,7 @@ and open the template in the editor.
             {
                 width: 50%;
                 float: left;
-                /*margin-top: 10px;*/
+
             }
 
             input
@@ -62,10 +62,14 @@ and open the template in the editor.
         </div>
         <div id="panel2">
             <p>Panel centro</p>
-            <div id="imagenImprimida"><img/></div>
+
+            <div id="imagenImprimida">
+
+            </div>
+            <input id="button2" type="button" value="Mostrar Catalogo">
         </div>
         <div id="panel3">
-            <input id="button" type="button" value="Mostrar Catalogo">
+            <input id="button1" type="button" value="Mostrar Catalogo">
             <div id="imagenes">
                 <img id="img1" src="img/01.jpg">
                 <img id="img2" src="img/02.jpg">
@@ -81,31 +85,56 @@ and open the template in the editor.
         </div>
         <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
         <script>
-    $(document).ready(function() {
-        $("#imagenes").hide();
-        var cambiarAtributo = function() {
+            $(document).ready(function() {
+                $("#imagenes").hide();
+                var cambiarAtributo = function() {
 
-            if ($("input").attr("value") == "Mostrar Catalogo") {
-                $("input").attr("value", "Ocultar Catalogo")
-                $("#imagenes").show(1000);
-            } else {
-                $("input").attr("value", "Mostrar Catalogo")
-                $("#imagenes").hide(1000);
-            }
-        }
+                    if ($("#button1").attr("value") == "Mostrar Catalogo") {
+                        $("#button1").attr("value", "Ocultar Catalogo")
+                        $("#imagenes").show(1000);
+                    } else {
+                        $("#button1").attr("value", "Mostrar Catalogo")
+                        $("#imagenes").hide(1000);
+                    }
+                }
 
-        $("input").click(function() {
-
-            $("input").click(cambiarAtributo());
-
-        });
         
-        $("img").click(function() {
-            var imagen = $("this").attr("src");
-            $("#imagenImprimida img").attr("src", imagen);
-        });
 
+                $("input").click(function() {
+
+                    $("input").click(cambiarAtributo());
+
+                });
+        
+       
+        
+      
+           
+                $("img").click(function() {
+                 
+                    var image = $(this).attr("src");
+                    $('#imagenImprimida').html('<img src="' + image + '"/>');
+
+                });
+      
+
+            });
+    
+    
+            /* Codig per inspirar:
+             * 
+             * $(function() {
+$(".image").click(function() {
+var image = $(this).attr("rel");
+$('#image').hide();
+$('#image').fadeIn('slow');
+$('#image').html('<img src="' + image + '"/>');
+return false;
     });
+});
+
+             * 
+             * */
         </script>
 
 

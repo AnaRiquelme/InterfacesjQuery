@@ -59,7 +59,7 @@ and open the template in the editor.
 
         <div id="panel1">
             <p>Panel izquierda</p>
-             <div id="imagenIzquierda">
+            <div id="imagenIzquierda">
 
             </div>
         </div>
@@ -104,54 +104,60 @@ and open the template in the editor.
                 var btnPanelCentral = function() {
 
                     if ($("#button2").attr("value") == "Mandar al panel izquierdo") {
-                        $("#button2").attr("value", "Traer del panel izquierdo")
-                        $("#imagenes").hide(1000);
-                        var image = $(this).attr("src");
-                    $('#imagenImprimida').html('<img src="' + image + '"/>');
-                    } else {
-                        $("#button2").attr("value", "Mostrar Catalogo")
-                        $("#imagenes").hide(1000);
+
+                        $("#button2").attr("value", "Traer del panel central");
+                        $('#imagenImprimida img').hide(100);
+                        var image = $("#imagenImprimida img").attr("src");
+                        $('#imagenIzquierda').append('<img src="' + image + '"/>');
+
+                    }
+                    else {
+                        $("#button2").attr("value", "Mandar al panel izquierdo");
+
+                        var pepito = $("#imagenIzquierda img").attr("src");
+                        $('#imagenIzquierda img').hide(100);
+                        $('#imagenImprimida img').html('<img src="' + pepito + '"/>');
                     }
                 }
-        
+
 
                 $("#button1").click(function() {
 
                     $("#button1").click(cambiarAtributo());
 
                 });
-        
-       
-         $("#button2").click(function() {
+
+
+                $("#button2").click(function() {
 
                     $("#button2").click(btnPanelCentral());
 
                 });
-      
-           
+
+
                 $("img").click(function() {
-                 
+
                     var image = $(this).attr("src");
                     $('#imagenImprimida').html('<img src="' + image + '"/>');
 
                 });
-      
+
 
             });
-    
-    
+
+
             /* Codig per inspirar:
              * 
              * $(function() {
-$(".image").click(function() {
-var image = $(this).attr("rel");
-$('#image').hide();
-$('#image').fadeIn('slow');
-$('#image').html('<img src="' + image + '"/>');
-return false;
-    });
-});
-
+             $(".image").click(function() {
+             var image = $(this).attr("rel");
+             $('#image').hide();
+             $('#image').fadeIn('slow');
+             $('#image').html('<img src="' + image + '"/>');
+             return false;
+             });
+             });
+             
              * 
              * */
         </script>

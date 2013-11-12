@@ -10,28 +10,46 @@ and open the template in the editor.
         <style> 
             html, body{
                 height:100%;
-                margin: 0px;
-                padding: 0px;
+                padding: 10px;
+                padding-top: 10px;
+                margin-top: 40px;
+                margin-left: 40px;
                 background-color: green;
             }
-           img
+            div 
             {
-                background-position: 10px;
+                position: relative;
+            }
+            .imgArbol
+            {
+                position: absolute;
+                border: 25px solid white;
             }
         </style>
     </head>
     <body>
-      
-                <img id="img1" src="img/01.jpg">
-                <img id="img2" src="img/02.jpg">
-                <img id="img3" src="img/03.jpg">
-                <img id="img4" src="img/04.jpg">
-                <img id="img5" src="img/05.jpg">
-                <img id="img6" src="img/06.jpg">
-                <img id="img7" src="img/07.jpg">
-                <img id="img8" src="img/08.jpg">
-                <img id="img9" src="img/09.jpg">
-                <img id="img10" src="img/010.jpg">
-       
+        <div>
+            <img class="imgArbol" src="img/01.jpg">
+            <img class="imgArbol" src="img/02.jpg">
+            <img class="imgArbol" src="img/03.jpg">
+            <img class="imgArbol" src="img/04.jpg">
+            <img class="imgArbol" src="img/05.jpg">
+            <img class="imgArbol" src="img/06.jpg">
+            <img class="imgArbol" src="img/07.jpg">
+            <img class="imgArbol" src="img/08.jpg">
+            <img class="imgArbol" src="img/09.jpg">
+            <img class="imgArbol" src="img/010.jpg">
+        </div>
+
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
+        <script>
+           $(document).ready(function(){
+            
+            $("img").click(function() {
+                $(this).animate();
+            });
+            
+           });
+        </script>
     </body>
 </html>

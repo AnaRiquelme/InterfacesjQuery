@@ -38,11 +38,10 @@ and open the template in the editor.
                 width: 15%;
                 padding-top: 10px;
             }
-            #img1, #img2, #img3, #img4, #img5, #img6, #img7, #img8, #img9, #img10
+            .img1
             {
                 width: 50%;
                 float: left;
-
             }
 
             input
@@ -51,19 +50,27 @@ and open the template in the editor.
             }
             .mandarIzq
             {
-                width: 100%;    
+                /*    width: 50px;
+                    height: 50px;*/
+            }
+            #imagenImprimida
+            {
+                /*height: 10px;*/
             }
             .mandarCentro
             {
                 margin: auto;
                 display: block;
-               /* height: 10%;*/
+                
+                
+                
             }
             #button2
             {
                 margin: auto;
                 display: block;  
             }
+
         </style>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
         </script>
@@ -89,16 +96,16 @@ and open the template in the editor.
         <div id="panel3">
             <input id="button1" type="button" value="Mostrar Catalogo">
             <div id="imagenes">
-                <img id="img1" src="img/01.jpg">
-                <img id="img2" src="img/02.jpg">
-                <img id="img3" src="img/03.jpg">
-                <img id="img4" src="img/04.jpg">
-                <img id="img5" src="img/05.jpg">
-                <img id="img6" src="img/06.jpg">
-                <img id="img7" src="img/07.jpg">
-                <img id="img8" src="img/08.jpg">
-                <img id="img9" src="img/09.jpg">
-                <img id="img10" src="img/010.jpg">
+                <img class="img1" src="img/01.jpg">
+                <img class="img1" src="img/02.jpg">
+                <img class="img1" src="img/03.jpg">
+                <img class="img1" src="img/04.jpg">
+                <img class="img1" src="img/05.jpg">
+                <img class="img1" src="img/06.jpg">
+                <img class="img1" src="img/07.jpg">
+                <img class="img1" src="img/08.jpg">
+                <img class="img1" src="img/09.jpg">
+                <img class="img1" src="img/010.jpg">
             </div>
         </div>
         <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
@@ -121,7 +128,8 @@ and open the template in the editor.
                     if ($("#button2").attr("value") == "Mandar al panel izquierdo") {
 
                         $("#button2").attr("value", "Traer del panel central");
-                        $('#imagenImprimida').fadeOut(1000);
+                        $('#imagenImprimida').animate({
+                            "bottom": "+=550px"}, "slow");
                         $('#imagenIzquierda').fadeIn(1000);
 
                     }
@@ -134,32 +142,23 @@ and open the template in the editor.
                 });
 
 
+                $("img").bind("mouseenter",function() {
+                    $(this).animate({width:"100%"});
+                });
+                  $("img").bind("mouseleave",function() {
+                    $(this).animate({width:"50%"});
+                });
                 $("img").click(function() {
-
                     var image = $(this).attr("src");
-                    $('#imagenImprimida').html('<img class="mandarCentro" src="' + image + '"/>');
+                    $('#imagenImprimida').html('<img class="mandarCentro" src="' + image + '"/>').animate({
+                        "left": "+=600px"}, 1000);
                     $('#imagenIzquierda').html('<img class="mandarIzq" src="' + image + '"/>').hide();
 
                 });
-
-
             });
 
+       
 
-            /* Codig per inspirar:
-             * 
-             * $(function() {
-             $(".image").click(function() {
-             var image = $(this).attr("rel");
-             $('#image').hide();
-             $('#image').fadeIn('slow');
-             $('#image').html('<img src="' + image + '"/>');
-             return false;
-             });
-             });
-             
-             * 
-             * */
         </script>
 
 

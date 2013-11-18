@@ -9,6 +9,8 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
 
+
+
             html, body{
                 height:100%;
                 margin: 0px;
@@ -18,7 +20,7 @@ and open the template in the editor.
             #panel1, #panel2, #panel3
             {
 
-                height: 100%;
+                height: 150%;
                 float:left;
 
             }
@@ -50,26 +52,20 @@ and open the template in the editor.
             }
             .mandarIzq
             {
-                /*    width: 50px;
-                    height: 50px;*/
-            }
-            #imagenImprimida
-            {
-                /*height: 10px;*/
+                width: 100%;
             }
             .mandarCentro
             {
                 margin: auto;
                 display: block;
-                
-                
-                
+                width:600px;
             }
             #button2
             {
                 margin: auto;
                 display: block;  
             }
+
 
         </style>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
@@ -84,13 +80,15 @@ and open the template in the editor.
             <div id="imagenIzquierda">
 
             </div>
+
         </div>
         <div id="panel2">
             <p>Panel centro</p>
 
-            <div id="imagenImprimida">
+            <div class="imagenImprimida">
 
             </div>
+
             <input id="button2" type="button" value="Mandar al panel izquierdo">
         </div>
         <div id="panel3">
@@ -128,36 +126,34 @@ and open the template in the editor.
                     if ($("#button2").attr("value") == "Mandar al panel izquierdo") {
 
                         $("#button2").attr("value", "Traer del panel central");
-                        $('#imagenImprimida').animate({
-                            "bottom": "+=550px"}, "slow");
-                        $('#imagenIzquierda').fadeIn(1000);
-
+                        $('.imagenImprimida').fadeOut(1000);
+                         $('#imagenIzquierda').show(1000);
                     }
                     else {
                         $("#button2").attr("value", "Mandar al panel izquierdo");
-                        $('#imagenImprimida').fadeIn(1000);
+                        $('.imagenImprimida').fadeIn(1000);
                         $('#imagenIzquierda').fadeOut(1000);
 
                     }
                 });
 
 
-                $("img").bind("mouseenter",function() {
-                    $(this).animate({width:"100%"});
+                $("img").bind("mouseenter", function() {
+                    $(this).animate({width: "100%"});
                 });
-                  $("img").bind("mouseleave",function() {
-                    $(this).animate({width:"50%"});
+                $("img").bind("mouseleave", function() {
+                    $(this).animate({width: "50%"});
                 });
                 $("img").click(function() {
                     var image = $(this).attr("src");
-                    $('#imagenImprimida').html('<img class="mandarCentro" src="' + image + '"/>').animate({
-                        "left": "+=600px"}, 1000);
+                    $('.imagenImprimida').html('<img class="mandarCentro" src="' + image + '"/>').animate({width: "-90%"}, "slow")
+                    $('.imagenImprimida').html('<img class="mandarCentro" src="' + image + '"/>').animate({width: "90%"}, "slow");
                     $('#imagenIzquierda').html('<img class="mandarIzq" src="' + image + '"/>').hide();
 
                 });
             });
 
-       
+
 
         </script>
 
